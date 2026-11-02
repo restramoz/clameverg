@@ -140,8 +140,13 @@
                             @if($staleServiceSlug)
                                 <option value="{{ $staleServiceSlug }}" @selected(old('service_slug', $article->service_slug) === $staleServiceSlug)>{{ $staleServiceSlug }} (tidak lagi ada di katalog)</option>
                             @endif
-                            @foreach($programs as $program)
-                                <option value="{{ $program['slug'] }}" @selected(old('service_slug', $article->service_slug) === $program['slug'])>{{ $program['title'] }}</option>
+                            @php $groupedEditPrograms = collect($programs)->groupBy('category_label')->sortKeys(); @endphp
+                            @foreach($groupedEditPrograms as $categoryName => $groupPrograms)
+                                <optgroup label="{{ $categoryName }}">
+                                @foreach($groupPrograms as $program)
+                                    <option value="{{ $program['slug'] }}" @selected(old('service_slug', $article->service_slug) === $program['slug'])>{{ $program['title'] }}</option>
+                                @endforeach
+                                </optgroup>
                             @endforeach
                         </select>
                         @if($staleServiceSlug)

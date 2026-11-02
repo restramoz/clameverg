@@ -18,10 +18,13 @@ class SchemeService
      */
     protected const SOURCE_FILES = [
         'layanan' => 'layanan.json',
+        'layanan_tambahan' => 'layanan_tambahan.json',
+        'layanan_lengkap' => 'layanan_lengkap.json',
     ];
 
     protected const SOURCE_IMAGES = [
         'k3listrik' => '/images/home/sumber-teknisi.jpg',
+        'layanan_lengkap' => '/images/home/sumber-teknisi.jpg',
     ];
 
     /**
@@ -221,6 +224,11 @@ class SchemeService
         $programs = [];
         $sources = [];
 
+        // Track normalized names added by earlier sources so the same service is
+        // not duplicated when layanan_lengkap.json (and others) overlap the
+        // protected 408-service catalog or layanan_tambahan.json.
+        $seenNames = [];
+
         foreach (self::SOURCE_FILES as $key => $file) {
             $full = base_path($file);
             $raw = is_file($full) ? file_get_contents($full) : false;
@@ -242,6 +250,12 @@ class SchemeService
                 static fn (array $scheme): bool => !self::isExcludedService((string) ($scheme['name'] ?? ''))
             ));
 
+            // Snapshot of names present BEFORE this source: cross-source
+            // duplicates are skipped, while duplicates inside a single source
+            // still receive deterministic -2, -3, ... slug suffixes.
+            $priorNames = $seenNames;
+            $addedCount = 0;
+
             // Merge adapted schemes, preserving deterministic slug collisions
             // across the unified catalog (-2, -3, ...).
             foreach ($adapted as $scheme) {
@@ -249,6 +263,14 @@ class SchemeService
                 if ($name === '') {
                     throw new \RuntimeException('Scheme source ' . $file . ' contains a scheme without a name.');
                 }
+
+                // Cross-source dedup: keep the first source's entry, skip the
+                // same service again instead of minting a duplicate slug.
+                $normalizedName = mb_strtolower($name);
+                if (isset($priorNames[$normalizedName])) {
+                    continue;
+                }
+
                 if (!isset($scheme['_slug'])) {
                     // Should never happen, but keeps the index deterministic.
                     $scheme['_slug'] = Str::slug($name);
@@ -263,7 +285,14 @@ class SchemeService
                 unset($scheme['_slug']);
                 $program = $this->program($slug, $name, $scheme, $sourceMeta);
                 $programs[$slug] = $program;
+                $addedCount++;
+
+                $seenNames[$normalizedName] = true;
             }
+
+            $sourceMeta['count'] = $addedCount;
+            $sourceMeta['scheme_count'] = $addedCount;
+            $sourceMeta['unit_count'] = 0;
 
             $sources[$key] = $sourceMeta;
         }

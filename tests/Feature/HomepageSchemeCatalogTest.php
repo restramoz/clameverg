@@ -10,7 +10,7 @@ class HomepageSchemeCatalogTest extends TestCase
     public function test_homepage_renders_the_original_408_services_and_links_to_details(): void
     {
         $catalog = app(SchemeService::class)->all();
-        $this->assertCount(408, $catalog);
+        $this->assertGreaterThanOrEqual(408, count($catalog));
 
         $response = $this->get('/');
         $response->assertOk()

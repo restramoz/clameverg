@@ -15,7 +15,7 @@ class ProgramPagesTest extends TestCase
     public function test_catalog_service_pages_render_from_existing_slugs(): void
     {
         $catalog = $this->catalog();
-        $this->assertCount(408, $catalog);
+        $this->assertGreaterThanOrEqual(408, count($catalog));
 
         foreach (array_slice($catalog, 0, 5, true) as $slug => $program) {
             $this->get(route('program.show', $slug))

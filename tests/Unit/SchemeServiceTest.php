@@ -34,7 +34,12 @@ class SchemeServiceTest extends TestCase
     {
         $decoded = json_decode(file_get_contents(base_path('layanan.json')), true);
         $this->assertCount(408, $decoded);
-        $this->assertCount(count($decoded), $this->service->all());
+
+        // The protected 408 legacy services remain in the unified catalog.
+        $this->assertSame(408, $this->service->sources()['layanan']['count']);
+        foreach ($decoded as $name) {
+            $this->assertNotNull($this->service->find(trim((string) $name)), "Missing legacy service: {$name}");
+        }
     }
 
     public function test_catalog_has_no_competency_units_from_layanan_json(): void

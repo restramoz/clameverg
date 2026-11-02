@@ -90,8 +90,13 @@
             </label>
             <select id="ai_service_slug" required class="w-full px-3.5 py-2 text-xs rounded-lg border border-concrete-300 bg-concrete-50 focus:outline-none focus:ring-2 focus:ring-safety-500">
                 <option value="">-- Pilih layanan dari katalog --</option>
-                @foreach($programs as $program)
-                    <option value="{{ $program['slug'] }}">{{ $program['title'] }}</option>
+                @php $groupedAiPrograms = collect($programs)->groupBy('category_label')->sortKeys(); @endphp
+                @foreach($groupedAiPrograms as $categoryName => $groupPrograms)
+                    <optgroup label="{{ $categoryName }}">
+                    @foreach($groupPrograms as $program)
+                        <option value="{{ $program['slug'] }}">{{ $program['title'] }}</option>
+                    @endforeach
+                    </optgroup>
                 @endforeach
             </select>
             <p class="text-[10px] text-concrete-500">Artikel membahas layanan terpilih secara umum dan dapat digunakan lintas wilayah.</p>
@@ -212,8 +217,13 @@
                         <label for="article_service_slug" class="block text-xs font-bold text-navy-950 mb-1 uppercase tracking-wider">Layanan Terkait</label>
                         <select id="article_service_slug" name="service_slug" class="w-full px-3.5 py-2 text-xs rounded-lg border border-concrete-300 bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                             <option value="">Artikel umum</option>
-                            @foreach($programs as $program)
-                                <option value="{{ $program['slug'] }}" @selected(old('service_slug') === $program['slug'])>{{ $program['title'] }}</option>
+                            @php $groupedArticlePrograms = collect($programs)->groupBy('category_label')->sortKeys(); @endphp
+                            @foreach($groupedArticlePrograms as $categoryName => $groupPrograms)
+                                <optgroup label="{{ $categoryName }}">
+                                @foreach($groupPrograms as $program)
+                                    <option value="{{ $program['slug'] }}" @selected(old('service_slug') === $program['slug'])>{{ $program['title'] }}</option>
+                                @endforeach
+                                </optgroup>
                             @endforeach
                         </select>
                     </div>

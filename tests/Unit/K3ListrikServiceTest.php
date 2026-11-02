@@ -14,7 +14,7 @@ class K3ListrikServiceTest extends TestCase
     {
         $service = app(SchemeService::class);
 
-        $this->assertCount(408, $service->all());
+        $this->assertGreaterThanOrEqual(408, count($service->all()));
         $this->assertSame('Brevet AB', array_values($service->all())[0]['title']);
     }
 
