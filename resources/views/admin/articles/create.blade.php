@@ -42,7 +42,7 @@
                 AI
             </span>
             <h2 class="font-bold text-base text-navy-950">
-                Generator Artikel AI Devtyeng
+                Generator Artikel AI Bevehard
             </h2>
             <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-navy-100 text-navy-900 font-bold border border-navy-300 ml-auto">
                 Lokal / Cloud

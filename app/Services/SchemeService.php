@@ -17,8 +17,6 @@ class SchemeService
      * Authoritative source files, in a fixed display order.
      */
     protected const SOURCE_FILES = [
-        'layanan' => 'layanan.json',
-        'layanan_tambahan' => 'layanan_tambahan.json',
         'layanan_lengkap' => 'layanan_lengkap.json',
     ];
 
@@ -599,7 +597,7 @@ class SchemeService
             'level' => $lsp ?? ('Layanan ' . $categoryName),
             'title' => $name,
             'badge' => $lsp ?? ('Layanan ' . $categoryName),
-            'meta_title' => $name . ' | ' . config('app.name', 'Devtyeng'),
+            'meta_title' => $name . ' | ' . config('app.name', 'Bevehard'),
             'meta_description' => 'Layanan ' . $categoryName . ' ' . $name . '. Rincian program dikonfirmasi melalui konsultasi.',
             'hero_heading' => $categoryName,
             'hero_highlight' => $name,

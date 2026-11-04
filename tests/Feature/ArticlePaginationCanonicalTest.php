@@ -30,7 +30,7 @@ class ArticlePaginationCanonicalTest extends TestCase
 
         $this->get('/artikel')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel">', false);
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel">', false);
     }
 
     public function test_second_page_canonical_is_self_referencing(): void
@@ -39,9 +39,9 @@ class ArticlePaginationCanonicalTest extends TestCase
 
         $this->get('/artikel?page=2')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel?page=2">', false)
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel?page=2">', false)
             // OG url must match the canonical.
-            ->assertSee('<meta property="og:url" content="https://devtyeng.my.id/artikel?page=2">', false);
+            ->assertSee('<meta property="og:url" content="https://bevehard.my.id/artikel?page=2">', false);
     }
 
     public function test_later_valid_page_keeps_its_own_canonical(): void
@@ -50,7 +50,7 @@ class ArticlePaginationCanonicalTest extends TestCase
 
         $this->get('/artikel?page=3')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel?page=3">', false);
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel?page=3">', false);
     }
 
     public function test_invalid_or_out_of_range_pages_fall_back_to_clean_canonical(): void
@@ -59,11 +59,11 @@ class ArticlePaginationCanonicalTest extends TestCase
 
         $this->get('/artikel?page=abc')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel">', false);
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel">', false);
 
         $this->get('/artikel?page=999')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel">', false);
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel">', false);
     }
 
     public function test_arbitrary_query_parameters_are_never_appended_to_canonical(): void
@@ -72,7 +72,7 @@ class ArticlePaginationCanonicalTest extends TestCase
 
         $this->get('/artikel?page=2&foo=bar&utm_source=campaign')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel?page=2">', false);
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel?page=2">', false);
     }
 
     public function test_article_detail_canonical_is_unchanged(): void
@@ -81,6 +81,6 @@ class ArticlePaginationCanonicalTest extends TestCase
 
         $this->get('/artikel/artikel-pengujian-1?foo=bar')
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/artikel/artikel-pengujian-1">', false);
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/artikel/artikel-pengujian-1">', false);
     }
 }

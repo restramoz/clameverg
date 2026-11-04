@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Devtyeng'),
+    'name' => env('APP_NAME', 'Bevehard'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://devtyeng.my.id'),
+    'url' => env('APP_URL', 'https://bevehard.my.id'),
 
     /*
     |--------------------------------------------------------------------------

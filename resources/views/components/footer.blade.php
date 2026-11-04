@@ -3,7 +3,7 @@
         <div>
             <a href="{{ route('home') }}" class="inline-flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
                 <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-lg font-black text-white">D</span>
-                <span class="text-lg font-extrabold tracking-tight">{{ config('app.name', 'Devtyeng') }}</span>
+                <span class="text-lg font-extrabold tracking-tight">{{ config('app.name', 'Bevehard') }}</span>
             </a>
             <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">Informasi layanan profesional dan program yang tercantum di katalog.</p>
         </div>
@@ -25,7 +25,7 @@
     </div>
     <div class="border-t border-slate-800">
         <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-            <p>&copy; {{ date('Y') }} {{ config('app.name', 'Devtyeng') }}.</p>
+            <p>&copy; {{ date('Y') }} {{ config('app.name', 'Bevehard') }}.</p>
             <p>Informasi mengikuti rincian yang tersedia pada setiap halaman layanan.</p>
         </div>
     </div>

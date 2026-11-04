@@ -13,7 +13,7 @@ class ServiceCatalogTest extends TestCase
     public function test_catalog_loads_from_layanan_json(): void
     {
         $this->assertGreaterThan(0, app(SchemeService::class)->all());
-        $this->assertGreaterThan(0, app(SchemeService::class)->sources()['layanan']['count']);
+        $this->assertGreaterThan(0, app(SchemeService::class)->sources()['layanan_lengkap']['count']);
     }
 
     public function test_every_scheme_has_complete_required_structure(): void

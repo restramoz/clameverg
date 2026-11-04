@@ -19,11 +19,11 @@
   @endif
   "author": {
     "@type": "Organization",
-    "name": "Tim Devtyeng"
+    "name": "Tim Bevehard"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "{{ config('app.name', 'Devtyeng') }}",
+    "name": "{{ config('app.name', 'Bevehard') }}",
     "url": "{{ rtrim(config('app.url'), '/') }}"
   }
 }
@@ -102,7 +102,7 @@
                     Diterbitkan: <strong class="text-dark-mahogany">{{ ($article->published_at ?? $article->created_at)->format('d F Y') }}</strong>
                 </time>
                 <span aria-hidden="true">&bull;</span>
-                <span>Oleh: <strong class="text-dark-mahogany">Tim Devtyeng</strong></span>
+                <span>Oleh: <strong class="text-dark-mahogany">Tim Bevehard</strong></span>
             </div>
 
             @if($article->excerpt)
@@ -218,10 +218,10 @@
         {{-- Consultation CTA --}}
         <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-industry-black text-white space-y-4 shadow-lg border border-dark-mahogany">
             <span class="inline-block px-3 py-1 rounded-full bg-dark-mahogany text-amber-500 text-[11px] font-bold uppercase tracking-wider border border-burnt-brick/40">
-                Skema Kompetensi Devtyeng
+                Skema Kompetensi Bevehard
             </span>
             <h3 class="font-extrabold text-xl sm:text-2xl text-white">
-                Konsultasikan Kebutuhan Program Devtyeng Anda
+                Konsultasikan Kebutuhan Program Bevehard Anda
             </h3>
             <p class="text-sm text-neutral-200 leading-relaxed max-w-2xl">
                 Dapatkan informasi mengenai skema kompetensi, unit pelatihan, dan saran program yang sesuai melalui WhatsApp.

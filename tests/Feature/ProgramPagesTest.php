@@ -41,7 +41,7 @@ class ProgramPagesTest extends TestCase
     {
         $slug = array_key_first($this->catalog());
         $this->get(route('program.show', $slug))->assertOk()
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id/layanan/'.$slug.'">', false)
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/layanan/'.$slug.'">', false)
             ->assertSee('aria-label="Breadcrumb"', false)
             ->assertSee('itemtype="https://schema.org/BreadcrumbList"', false)
             ->assertSee('aria-current="page"', false);

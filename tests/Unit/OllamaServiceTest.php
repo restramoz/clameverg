@@ -49,7 +49,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -89,7 +89,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -131,7 +131,7 @@ class OllamaServiceTest extends TestCase
 
         $service = new OllamaService();
         $result = $service->generateArticle([
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Topik Umum',
         ]);
@@ -164,7 +164,7 @@ class OllamaServiceTest extends TestCase
 
         $service = new OllamaService();
         $result = $service->generateArticle([
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Topik Wilayah',
         ]);
@@ -243,7 +243,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -285,7 +285,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -318,7 +318,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -337,7 +337,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -358,7 +358,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -382,7 +382,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -422,7 +422,7 @@ class OllamaServiceTest extends TestCase
         $result = $service->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Dummy Topic',
         ]);
@@ -457,7 +457,7 @@ class OllamaServiceTest extends TestCase
         $result = (new OllamaService())->generateArticle([
             'city_name' => 'Bandung',
             'city_slug' => 'bandung',
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'word_count' => 7500,
             'topic' => 'Pemeliharaan mesin',
         ]);

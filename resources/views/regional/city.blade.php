@@ -36,7 +36,7 @@
                     Skema Kompetensi &amp; Layanan Konsultasi
                 </div>
                 <h1 id="city-hero-heading" class="font-extrabold tracking-tight text-white leading-tight uppercase text-[clamp(1.75rem,4.5vw,2.5rem)] sm:text-[clamp(2rem,5vw,3rem)] lg:text-[clamp(2.25rem,4.5vw,3.5rem)]">
-                    Skema Kompetensi Devtyeng<br><span class="text-safety-orange">{{ $city['name'] }}</span>
+                    Skema Kompetensi Bevehard<br><span class="text-safety-orange">{{ $city['name'] }}</span>
                 </h1>
                 <p class="mt-6 text-base sm:text-lg text-neutral-200 leading-relaxed">
                     Informasi katalog layanan dengan konteks <strong class="text-white">{{ $city['name'] }}</strong>, Provinsi {{ $city['province'] }}. Nama wilayah ini tidak menyatakan adanya kantor atau penyelenggaraan setempat.
@@ -82,7 +82,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($programs as $prog)
                 @php $extra = $loop->iteration > 6; @endphp
-                <a href="{{ route('region.program.detail', ['region' => $regionalProgramPrefix, 'program' => $prog['slug']]) }}" class="group flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick {{ $extra ? 'scheme-extra' : '' }}" @if($extra) hidden @endif>
+                <a href="{{ route('region.program.detail', ['region' => $regionalProgramPrefix, 'program' => $prog['slug']]) }}" class="group city-program-item flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick {{ $extra ? 'scheme-extra' : '' }}" @if($extra) hidden @endif>
                     <div class="h-1.5 bg-safety-orange"></div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="text-xs font-bold uppercase tracking-wider text-burnt-brick mb-1">{{ $prog['category_label'] ?? 'Layanan' }}</div>
@@ -98,8 +98,15 @@
             </div>
 
             <div class="mt-10 text-center">
-                <button type="button" class="js-show-all inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-burnt-brick hover:bg-leaf rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick transition-colors" aria-expanded="false" data-extra-count="{{ max(0, count($programs) - 6) }}">
-                    Lihat Semua Skema
+                <button
+                    type="button"
+                    id="city-program-toggle"
+                    class="inline-flex min-h-[48px] cursor-pointer items-center justify-center rounded-lg border-2 border-burnt-brick px-6 py-3 text-sm font-bold text-burnt-brick transition hover:bg-burnt-brick hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick"
+                    aria-expanded="false"
+                    data-total="{{ count($programs) }}"
+                    data-limit="6">
+                    <span id="city-program-toggle-label">Lihat Semua {{ count($programs) }} Skema</span>
+                    <svg id="city-program-toggle-icon" class="ml-2 h-4 w-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
                 </button>
                 <p class="mt-3 text-xs text-dark-mahogany">
                     Menampilkan 6 dari {{ count($programs) }} skema. Saat diperluas, seluruh {{ count($programs) }} skema tampil; pilih tombol yang sama untuk menampilkan lebih sedikit.
@@ -117,7 +124,7 @@
             <h2 id="city-article-heading" class="text-2xl font-extrabold text-industry-black mb-2">
                 Artikel &amp; Panduan di {{ $city['name'] }}
             </h2>
-            <p class="text-sm text-dark-mahogany mb-8">Kumpulan artikel edukatif terkait skema kompetensi dan Devtyeng untuk wilayah {{ $city['name'] }}.</p>
+            <p class="text-sm text-dark-mahogany mb-8">Kumpulan artikel edukatif terkait skema kompetensi dan Bevehard untuk wilayah {{ $city['name'] }}.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($articles as $art)
                 <a href="{{ route('articles.show', $art->slug) }}" class="group flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick">
@@ -213,10 +220,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="max-w-3xl mx-auto">
                 <h2 id="city-cta-heading" class="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
-                    Konsultasi Program Devtyeng<br><span class="text-safety-orange">{{ $city['name'] }}</span>
+                    Konsultasi Program Bevehard<br><span class="text-safety-orange">{{ $city['name'] }}</span>
                 </h2>
                 <p class="mt-4 text-base text-neutral-200 leading-relaxed">
-                    Hubungi kami untuk menanyakan informasi program pelatihan dan sertifikasi yang tercantum dalam katalog Devtyeng.
+                    Hubungi kami untuk menanyakan informasi program pelatihan dan sertifikasi yang tercantum dalam katalog Bevehard.
                 </p>
                 <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
                     <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Sekarang" class="w-full sm:w-auto font-bold shadow-lg" />
@@ -232,4 +239,45 @@
             </div>
         </div>
     </section>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('city-program-toggle');
+    const items = Array.from(document.querySelectorAll('.city-program-item'));
+    if (!toggleButton || items.length === 0) return;
+
+    const label = document.getElementById('city-program-toggle-label');
+    const icon = document.getElementById('city-program-toggle-icon');
+    const limit = 6;
+    let expanded = false;
+
+    function updateList() {
+        items.forEach(function (item, index) {
+            item.hidden = !expanded && index >= limit;
+        });
+        toggleButton.setAttribute('aria-expanded', String(expanded));
+        if (label) {
+            label.textContent = expanded
+                ? 'Tampilkan Lebih Sedikit'
+                : 'Lihat Semua ' + items.length + ' Skema';
+        }
+        if (icon) {
+            icon.style.transform = expanded ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
+
+    toggleButton.addEventListener('click', function () {
+        expanded = !expanded;
+        updateList();
+        if (!expanded) {
+            document.getElementById('program')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+
+    updateList();
+});
+</script>
+@endpush
+
 @endsection

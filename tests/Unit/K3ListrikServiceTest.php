@@ -15,7 +15,7 @@ class K3ListrikServiceTest extends TestCase
         $service = app(SchemeService::class);
 
         $this->assertGreaterThanOrEqual(408, count($service->all()));
-        $this->assertSame('Brevet AB', array_values($service->all())[0]['title']);
+        $this->assertSame('Analisis Pelumas Unit Alat Berat', array_values($service->all())[0]['title']);
     }
 
     public function test_generation_fails_safely_without_a_valid_service(): void

@@ -119,7 +119,7 @@ class ProgramController extends Controller
             'region' => $context,
             'articles' => $articles,
             'pageTitle' => $programData['title'].' '.$context['name'],
-            'pageDescription' => 'Informasi '.$programData['title'].' untuk '.$context['name'].'. Tinjau ruang lingkup dan rincian yang tersedia dalam katalog layanan Devtyeng.',
+            'pageDescription' => 'Informasi '.$programData['title'].' untuk '.$context['name'].'. Tinjau ruang lingkup dan rincian yang tersedia dalam katalog layanan Bevehard.',
             'waMessage' => 'Halo, saya ingin menanyakan informasi '.$programData['title'].' untuk '.$context['name'].'.',
         ]);
     }

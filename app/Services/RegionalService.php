@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
  * Dataset source: BPS (Badan Pusat Statistik) Indonesia – public administrative data.
  * File: master_wilayah_bps.json  (7,288 rows × 7 fields)
  *
- * Hierarchy: Province → City/Kabupaten (514) → District/Kecamatan (7,288)
+ * Hierarchy: Province → City/Kabupaten (514)
  */
 class RegionalService
 {
@@ -24,7 +24,6 @@ class RegionalService
 
     private static ?array $provinceSlugMap = null;
 
-    private static ?array $districtSlugMap = null;
 
     private static function cachePath(): string
     {
@@ -47,7 +46,6 @@ class RegionalService
                 self::$provinces = $cached['provinces'];
                 self::$citySlugMap = $cached['citySlugMap'];
                 self::$provinceSlugMap = $cached['provinceSlugMap'];
-                self::$districtSlugMap = $cached['districtSlugMap'];
 
                 return;
             }
@@ -63,7 +61,6 @@ class RegionalService
             self::$provinces = [];
             self::$citySlugMap = [];
             self::$provinceSlugMap = [];
-            self::$districtSlugMap = [];
 
             return;
         }
@@ -75,7 +72,6 @@ class RegionalService
             self::$provinces = [];
             self::$citySlugMap = [];
             self::$provinceSlugMap = [];
-            self::$districtSlugMap = [];
 
             return;
         }
@@ -84,7 +80,6 @@ class RegionalService
         $provinces = [];
         $citySlugMap = [];
         $provinceSlugMap = [];
-        $districtSlugMap = [];
 
         foreach ($records as $r) {
             $provCode = trim((string) $r['Kode Provinsi']);
@@ -92,8 +87,6 @@ class RegionalService
             $cityCode = trim((string) $r['Kode Kab/Kota']);
             $rawName = trim((string) $r['Kabupaten/Kota']);
             $type = trim((string) $r['Jenis Wilayah']);
-            $distName = trim((string) $r['Kecamatan']);
-            $distCode = trim((string) $r['Kode Kecamatan']);
 
             $fullName = ($type === 'Kota') ? "Kota {$rawName}" : "Kabupaten {$rawName}";
             $rawSlug = Str::slug($rawName);
@@ -126,7 +119,6 @@ class RegionalService
                     'province_slug' => $provSlug,
                     'island' => $island,
                     'slug' => $citySlug,
-                    'districts' => [],
                 ];
 
                 $cities[$cityCode]['slug'] = $citySlug;
@@ -149,26 +141,6 @@ class RegionalService
                 $provinces[$provCode]['cities'][] = $cityCode;
                 $provinces[$provCode]['total_cities']++;
             }
-
-            // District
-            $distSlug = Str::slug($distName);
-            $distItem = [
-                'name' => $distName,
-                'code' => $distCode,
-                'slug' => $distSlug,
-                'city_code' => $cityCode,
-            ];
-
-            $cities[$cityCode]['districts'][] = $distItem;
-
-            // Global district slug map (can have collisions; city-scoped key preferred)
-            if (! isset($districtSlugMap[$distSlug])) {
-                $districtSlugMap[$distSlug] = [];
-            }
-            $districtSlugMap[$distSlug][] = $distItem;
-
-            // City-scoped key: {citySlug}/{distSlug}
-            $districtSlugMap["{$citySlug}/{$distSlug}"] = [$distItem];
         }
 
         ksort($provinces);
@@ -177,7 +149,6 @@ class RegionalService
         self::$provinces = $provinces;
         self::$citySlugMap = $citySlugMap;
         self::$provinceSlugMap = $provinceSlugMap;
-        self::$districtSlugMap = $districtSlugMap;
 
         // Write compiled PHP cache
         $cacheDir = dirname($cacheFile);
@@ -190,7 +161,6 @@ class RegionalService
             'provinces' => $provinces,
             'citySlugMap' => $citySlugMap,
             'provinceSlugMap' => $provinceSlugMap,
-            'districtSlugMap' => $districtSlugMap,
         ], true) . ';');
     }
 
@@ -265,60 +235,6 @@ class RegionalService
         return null;
     }
 
-    public function findDistrict(string $districtSlug, ?string $citySlug = null): ?array
-    {
-        self::initialize();
-        $cleanDist = Str::slug($districtSlug);
-
-        if ($citySlug !== null) {
-            $city = $this->findCity($citySlug);
-            if (! $city) {
-                return null;
-            }
-            foreach ($city['districts'] as $dist) {
-                if ($dist['slug'] === $cleanDist) {
-                    return $this->enrichDistrict($dist, $city);
-                }
-            }
-
-            return null;
-        }
-
-        if (isset(self::$districtSlugMap[$cleanDist])) {
-            $matches = self::$districtSlugMap[$cleanDist];
-            if (! empty($matches)) {
-                $first = $matches[0];
-                $city = self::$cities[$first['city_code']] ?? null;
-                if ($city) {
-                    return $this->enrichDistrict($first, $city);
-                }
-            }
-        }
-
-        return null;
-    }
-
-    private function enrichDistrict(array $district, array $city): array
-    {
-        $siblings = array_filter(
-            $city['districts'],
-            fn ($d) => $d['code'] !== $district['code']
-        );
-
-        return array_merge($district, [
-            'city_name' => $city['name'],
-            'city_raw_name' => $city['raw_name'],
-            'city_slug' => $city['slug'],
-            'city_type' => $city['type'],
-            'city_code' => $city['code'],
-            'province' => $city['province'],
-            'province_slug' => $city['province_slug'],
-            'island' => $city['island'],
-            'city' => $city,
-            'sibling_districts' => array_values($siblings),
-        ]);
-    }
-
     public function getProvinceCities(string $provinceCode, ?string $excludeCode = null, int $limit = 12): array
     {
         self::initialize();
@@ -373,6 +289,5 @@ class RegionalService
         self::$provinces = null;
         self::$citySlugMap = null;
         self::$provinceSlugMap = null;
-        self::$districtSlugMap = null;
     }
 }

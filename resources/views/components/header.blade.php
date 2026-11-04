@@ -1,9 +1,9 @@
 <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 text-slate-900 shadow-sm backdrop-blur">
     <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="{{ route('home') }}" class="inline-flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="{{ config('app.name', 'Devtyeng') }} beranda">
+        <a href="{{ route('home') }}" class="inline-flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="{{ config('app.name', 'Bevehard') }} beranda">
             <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-lg font-black text-white">D</span>
             <span class="leading-tight">
-                <span class="block text-lg font-extrabold tracking-tight">{{ config('app.name', 'Devtyeng') }}</span>
+                <span class="block text-lg font-extrabold tracking-tight">{{ config('app.name', 'Bevehard') }}</span>
                 <span class="block text-[11px] font-medium text-slate-600">Katalog layanan profesional</span>
             </span>
         </a>

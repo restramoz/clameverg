@@ -22,7 +22,7 @@ class OllamaPromptTest extends TestCase
                 'slug' => 'panduan-layanan',
                 'excerpt' => 'Ringkasan umum.',
                 'content' => str_repeat('kata ', 7500),
-                'seo_title' => 'Panduan layanan | Devtyeng',
+                'seo_title' => 'Panduan layanan | Bevehard',
                 'meta_description' => 'Informasi umum layanan.',
                 'suggested_faqs' => [],
                 'image_brief' => [],
@@ -62,7 +62,7 @@ class OllamaPromptTest extends TestCase
             $system = $request['messages'][0]['content'];
             $user = $request['messages'][1]['content'];
 
-            return str_contains($system, 'Judul layanan persis dari katalog Devtyeng: '.$service['title'])
+            return str_contains($system, 'Judul layanan persis dari katalog Bevehard: '.$service['title'])
                 && str_contains($system, 'Jangan menyebut provinsi, kota, kabupaten, kecamatan')
                 && str_contains($user, $service['title'])
                 && ! str_contains($user, 'Bandung')

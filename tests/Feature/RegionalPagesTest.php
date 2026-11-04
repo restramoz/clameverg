@@ -8,12 +8,11 @@ use Tests\TestCase;
 
 class RegionalPagesTest extends TestCase
 {
-    public function test_dataset_keeps_provinces_cities_and_internal_district_lookups(): void
+    public function test_dataset_keeps_provinces_and_cities_only(): void
     {
         $regional = app(RegionalService::class);
         $this->assertCount(38, $regional->getAllProvinces());
         $this->assertCount(514, $regional->getAllCities());
-        $this->assertSame('Coblong', $regional->findDistrict('coblong', 'bandung')['name']);
     }
 
     public function test_province_and_city_landings_render_without_public_district_links(): void
@@ -38,13 +37,13 @@ class RegionalPagesTest extends TestCase
         $response->assertSee($program['title'].' Kota Malang', false)
             ->assertSee('Informasi '.$program['title'].' untuk Kota Malang. Uraian layanan berikut tetap bersifat umum.')
             ->assertSee(e($program['introduction']), false)
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id'.$serviceUrl.'">', false)
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id'.$serviceUrl.'">', false)
             ->assertSee('Kota Malang', false);
 
         $regencyUrl = '/kabupaten-malang/'.$program['slug'];
         $this->get($regencyUrl)->assertOk()
             ->assertSee($program['title'].' Kabupaten Malang', false)
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id'.$regencyUrl.'">', false)
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id'.$regencyUrl.'">', false)
             ->assertSee(e($program['introduction']), false);
     }
 
@@ -54,7 +53,7 @@ class RegionalPagesTest extends TestCase
         $url = '/provinsi-jawa-timur/'.$program['slug'];
         $this->get($url)->assertOk()
             ->assertSee($program['title'].' Provinsi Jawa Timur', false)
-            ->assertSee('<link rel="canonical" href="https://devtyeng.my.id'.$url.'">', false)
+            ->assertSee('<link rel="canonical" href="https://bevehard.my.id'.$url.'">', false)
             ->assertSee(e($program['introduction']), false);
     }
 
@@ -82,8 +81,8 @@ class RegionalPagesTest extends TestCase
     public function test_sitemap_contains_only_supported_regional_levels(): void
     {
         $response = $this->get(route('sitemap'))->assertOk();
-        $response->assertSee('https://devtyeng.my.id/provinsi/jawa-barat', false)
-            ->assertSee('https://devtyeng.my.id/kota/bandung', false)
+        $response->assertSee('https://bevehard.my.id/provinsi/jawa-barat', false)
+            ->assertSee('https://bevehard.my.id/kota/bandung', false)
             ->assertDontSee('/kecamatan/', false)
             ->assertDontSee('coblong', false);
     }

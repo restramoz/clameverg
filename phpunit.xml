@@ -21,7 +21,7 @@
         <env name="APP_ENV" value="testing"/>
         <!-- Test-only values: the project .env (untouched) lacks APP_KEY and overrides APP_URL. -->
         <env name="APP_KEY" value="base64:JCf1sEqBJ3pp1eho4BwkrX3dl6pMG0kXBtkPdHQQx5w="/>
-        <env name="APP_URL" value="https://devtyeng.my.id"/>
+        <env name="APP_URL" value="https://bevehard.my.id"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="BROADCAST_CONNECTION" value="null"/>

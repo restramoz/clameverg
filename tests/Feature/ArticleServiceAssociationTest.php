@@ -138,11 +138,11 @@ class ArticleServiceAssociationTest extends TestCase
             'slug' => 'artikel-brevet-ab-malang',
             'status' => 'published',
             'published_at' => now(),
-            'service_slug' => 'brevet-ab',
+            'service_slug' => 'analisis-pelumas-unit-alat-berat',
             'target_city_slug' => 'kota-malang',
         ]);
 
-        $this->get('/kota-malang/brevet-ab')
+        $this->get('/kota-malang/analisis-pelumas-unit-alat-berat')
             ->assertOk()
             ->assertSee($relevant->title, false)
             ->assertDontSee('Artikel Layanan Umum');

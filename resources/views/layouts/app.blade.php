@@ -9,7 +9,7 @@
 @php
     // Brand appears exactly once: only append when not already present
     // (case-insensitive), e.g. scheme meta_title already ends with the brand.
-    $brandName = trim((string) config('app.name', 'Devtyeng'));
+    $brandName = trim((string) config('app.name', 'Bevehard'));
     $brandTitle = trim((string) View::getSection('title'));
     if ($brandTitle === '') {
         $brandTitle = $brandName;
@@ -20,19 +20,19 @@
 
     <!-- Isi judul section sudah di-escape di titik penyimpanannya (startSection), jadi cetak apa adanya. -->
     <title>{!! $brandTitle !!}</title>
-    <meta name="description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Devtyeng dan temukan informasi yang tersedia untuk setiap program.')">
+    <meta name="description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Bevehard dan temukan informasi yang tersedia untuk setiap program.')">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="@yield('canonical_url', rtrim(config('app.url'), '/') . request()->getPathInfo())">
 
     <!-- Open Graph / Meta -->
     <meta property="og:title" content="{!! $brandTitle !!}">
-    <meta property="og:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Devtyeng dan temukan informasi yang tersedia untuk setiap program.')">
+    <meta property="og:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Bevehard dan temukan informasi yang tersedia untuk setiap program.')">
     <meta property="og:type" content="website">
     <meta property="og:url" content="@yield('canonical_url', rtrim(config('app.url'), '/') . request()->getPathInfo())">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{!! $brandTitle !!}">
-    <meta name="twitter:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Devtyeng.')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Bevehard.')">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#1E3A8A">
@@ -70,5 +70,7 @@
 
     <!-- Floating WhatsApp CTA -->
     <x-wa-float :message="View::hasSection('wa_message') ? View::getSection('wa_message') : null" />
+
+    @stack('scripts')
 </body>
 </html>

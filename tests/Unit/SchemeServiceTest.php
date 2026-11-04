@@ -32,13 +32,18 @@ class SchemeServiceTest extends TestCase
 
     public function test_catalog_loads_all_services_from_layanan_json(): void
     {
-        $decoded = json_decode(file_get_contents(base_path('layanan.json')), true);
-        $this->assertCount(408, $decoded);
+        $decoded = json_decode(file_get_contents(base_path('layanan_lengkap.json')), true);
+        $this->assertCount(21, $decoded);
 
         // The protected 408 legacy services remain in the unified catalog.
-        $this->assertSame(408, $this->service->sources()['layanan']['count']);
-        foreach ($decoded as $name) {
-            $this->assertNotNull($this->service->find(trim((string) $name)), "Missing legacy service: {$name}");
+        $this->assertSame(4177, $this->service->sources()['layanan_lengkap']['count']);
+        foreach ($decoded as $category) {
+            foreach ($category['layanan'] as $name) {
+                if (\App\Services\SchemeService::isExcludedService((string) $name)) {
+                    continue;
+                }
+                $this->assertNotNull($this->service->find(trim((string) $name)), "Missing service: {$name}");
+            }
         }
     }
 
@@ -57,10 +62,10 @@ class SchemeServiceTest extends TestCase
     {
         $sources = $this->service->sources();
 
-        $this->assertArrayHasKey('layanan', $sources);
-        $this->assertSame('Layanan', $sources['layanan']['title']);
-        $this->assertSame('layanan.json', $sources['layanan']['file']);
-        $this->assertGreaterThan(0, $sources['layanan']['count']);
+        $this->assertArrayHasKey('layanan_lengkap', $sources);
+        $this->assertNotEmpty($sources['layanan_lengkap']['title']);
+        $this->assertSame('layanan_lengkap.json', $sources['layanan_lengkap']['file']);
+        $this->assertGreaterThan(0, $sources['layanan_lengkap']['count']);
     }
 
     public function test_find_returns_scheme_by_derived_slug(): void
@@ -69,8 +74,8 @@ class SchemeServiceTest extends TestCase
         $scheme = $this->service->find($slug);
 
         $this->assertNotNull($scheme);
-        $this->assertSame('Brevet AB', $scheme['title']);
-        $this->assertSame('layanan', $scheme['source']);
+        $this->assertSame('Analisis Pelumas Unit Alat Berat', $scheme['title']);
+        $this->assertSame('layanan_lengkap', $scheme['source']);
     }
 
     public function test_find_is_case_and_spacing_tolerant(): void

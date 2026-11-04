@@ -55,7 +55,7 @@
                     class="font-extrabold tracking-tight text-white leading-tight uppercase text-[clamp(1.75rem,4.5vw,2.5rem)] sm:text-[clamp(2rem,5vw,3rem)] lg:text-[clamp(2.25rem,4.5vw,3.5rem)]">
                     Skema Kompetensi<br>
                     <span class="text-safety-orange">
-                        Devtyeng Provinsi {{ $province['name'] }}
+                        Bevehard Provinsi {{ $province['name'] }}
                     </span>
                 </h1>
 
@@ -98,7 +98,7 @@
                     <div class="min-w-0">
                         <div class="text-[10px] sm:text-xs text-neutral-400 uppercase tracking-wider">Lingkup</div>
                         <div class="text-sm sm:text-base font-extrabold text-amber-500 mt-0.5">
-                            Devtyeng
+                            Bevehard
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                 </h2>
 
                 <p class="mt-3 text-sm sm:text-base text-dark-mahogany leading-relaxed">
-                    Pilih program pelatihan Devtyeng sesuai kebutuhan organisasi Anda.
+                    Pilih program pelatihan Bevehard sesuai kebutuhan organisasi Anda.
                     Gunakan tombol di bawah untuk melihat seluruh layanan yang tersedia.
                 </p>
             </div>
@@ -179,7 +179,7 @@
                                 </h3>
 
                                 <p class="text-xs sm:text-sm text-dark-mahogany flex-1 leading-relaxed line-clamp-3">
-                                    {{ $prog['hero_subheading'] ?? 'Informasi program pelatihan dan konsultasi Devtyeng.' }}
+                                    {{ $prog['hero_subheading'] ?? 'Informasi program pelatihan dan konsultasi Bevehard.' }}
                                 </p>
 
                                 <div class="mt-4 pt-4 border-t border-neutral-100 text-xs font-bold text-burnt-brick flex items-center justify-between">
@@ -200,7 +200,7 @@
                     <button
                         type="button"
                         id="province-program-toggle"
-                        class="inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-3 min-h-[48px] rounded-xl border-2 border-burnt-brick text-sm sm:text-base font-bold text-burnt-brick hover:bg-burnt-brick hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick focus-visible:ring-offset-2"
+                        class="inline-flex cursor-pointer items-center justify-center gap-2 px-5 sm:px-7 py-3 min-h-[48px] rounded-xl border-2 border-burnt-brick text-sm sm:text-base font-bold text-burnt-brick hover:bg-burnt-brick hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick focus-visible:ring-offset-2"
                         aria-expanded="false"
                         aria-controls="province-program-grid"
                         data-total="{{ $totalPrograms }}"
@@ -277,7 +277,7 @@
                 @foreach ([
                     [
                         'q' => 'Apakah skema kompetensi dan layanan konsultasi tersedia untuk wilayah Provinsi ' . $province['name'] . '?',
-                        'a' => 'Halaman ini menampilkan informasi program dari katalog Devtyeng. Hubungi kami melalui WhatsApp untuk menanyakan rincian program di Provinsi ' . $province['name'] . '.',
+                        'a' => 'Halaman ini menampilkan informasi program dari katalog Bevehard. Hubungi kami melalui WhatsApp untuk menanyakan rincian program di Provinsi ' . $province['name'] . '.',
                     ],
                     [
                         'q' => 'Skema kompetensi apa saja yang tersedia?',
@@ -322,7 +322,7 @@
 
                 <h2 id="prov-cta-heading"
                     class="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
-                    Konsultasi Program Devtyeng<br>
+                    Konsultasi Program Bevehard<br>
                     <span class="text-safety-orange">
                         Provinsi {{ $province['name'] }}
                     </span>
@@ -378,7 +378,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateProgramList() {
         items.forEach(function (item, index) {
-            item.hidden = !expanded && index >= limit;
+            const shouldHide = !expanded && index >= limit;
+            item.hidden = shouldHide;
+            if (shouldHide) {
+                item.classList.add('hidden');
+            } else {
+                item.classList.remove('hidden');
+            }
         });
 
         toggleButton.setAttribute('aria-expanded', String(expanded));

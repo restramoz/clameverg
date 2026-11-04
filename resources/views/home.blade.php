@@ -2,7 +2,7 @@
 
 @section('title', 'Layanan Pelatihan & Sertifikasi')
 
-@section('meta_description', 'Jelajahi katalog Devtyeng yang memuat program pelatihan, pengembangan profesional, dan sertifikasi dari berbagai bidang. Tinjau informasi layanan dan konsultasikan kebutuhan Anda.')
+@section('meta_description', 'Jelajahi katalog Bevehard yang memuat program pelatihan, pengembangan profesional, dan sertifikasi dari berbagai bidang. Tinjau informasi layanan dan konsultasikan kebutuhan Anda.')
 
 @section('content')
 @php
@@ -65,7 +65,7 @@
 
                 <span class="inline-flex self-start items-center gap-2 rounded-full border border-[#B45309]/30 bg-[#B45309]/10 px-4 py-2 text-xs font-bold tracking-wide text-amber-300 sm:text-sm">
                     <span class="h-2 w-2 rounded-full bg-[#B45309]"></span>
-                    Devtyeng · Layanan Pelatihan &amp; Sertifikasi
+                    Bevehard · Layanan Pelatihan &amp; Sertifikasi
                 </span>
 
                 <h1 id="hero-heading"
@@ -143,7 +143,7 @@
 
                     <div class="absolute inset-x-0 bottom-0 p-5 sm:p-7">
                         <span class="inline-flex rounded-full border border-[#B45309]/30 bg-[#0F172A]/80 px-3 py-1.5 text-xs font-bold text-[#B45309] backdrop-blur-md">
-                            Katalog Devtyeng
+                            Katalog Bevehard
                         </span>
 
                         <h2 class="mt-3 text-xl font-black leading-snug text-white sm:text-2xl">
@@ -384,7 +384,7 @@
 
             <div class="absolute bottom-0 left-0 right-0 p-6 lg:hidden">
                 <span class="text-xs font-bold uppercase tracking-widest text-[#B45309]">
-                    Devtyeng
+                    Bevehard
                 </span>
                 <h3 class="mt-2 text-2xl font-black text-white">
                     Standar Kompetensi &amp; Layanan Terarah
@@ -406,7 +406,7 @@
             </h2>
 
             <p class="mt-5 max-w-xl text-sm leading-relaxed text-[#C7CBD2] sm:text-base">
-                Katalog Devtyeng memuat nama program pelatihan, pengembangan profesional, dan sertifikasi dari berbagai bidang. Buka informasi tiap layanan untuk meninjau rincian yang tersedia dan menanyakan hal yang belum tercantum.
+                Katalog Bevehard memuat nama program pelatihan, pengembangan profesional, dan sertifikasi dari berbagai bidang. Buka informasi tiap layanan untuk meninjau rincian yang tersedia dan menanyakan hal yang belum tercantum.
             </p>
 
             <!-- Feature Points Grid -->
@@ -544,7 +544,7 @@
                 </h2>
 
                 <p class="mt-4 text-sm leading-relaxed text-[#535B66] sm:text-base">
-                    Artikel dan panduan seputar pelatihan, pengembangan profesional, dan topik yang tercantum dalam katalog Devtyeng.
+                    Artikel dan panduan seputar pelatihan, pengembangan profesional, dan topik yang tercantum dalam katalog Bevehard.
                 </p>
             </div>
 
@@ -594,7 +594,7 @@
 
                         <div class="flex items-center justify-between gap-2">
                             <span class="self-start rounded-full bg-[#B45309]/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#006E5E]">
-                                Devtyeng
+                                Bevehard
                             </span>
 
                             @if ($article->target_city_slug)
@@ -689,7 +689,7 @@
         </h2>
 
         <p class="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-[#C7CBD2] sm:text-base lg:text-lg">
-            Sampaikan kebutuhan Anda mengenai layanan pelatihan dan sertifikasi yang tercantum dalam katalog Devtyeng.
+            Sampaikan kebutuhan Anda mengenai layanan pelatihan dan sertifikasi yang tercantum dalam katalog Bevehard.
         </p>
 
         <div class="mt-8 flex justify-center">

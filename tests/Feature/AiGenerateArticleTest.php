@@ -65,7 +65,7 @@ class AiGenerateArticleTest extends TestCase
                 'slug' => 'panduan-layanan-umum',
                 'excerpt' => 'Ringkasan umum.',
                 'content' => '<p>Konten generik.</p>',
-                'seo_title' => 'Panduan layanan | Devtyeng',
+                'seo_title' => 'Panduan layanan | Bevehard',
                 'meta_description' => 'Informasi umum.',
                 'suggested_faqs' => [],
                 'image_brief' => [],

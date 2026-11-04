@@ -16,7 +16,7 @@ class ServiceTitleTest extends TestCase
         $this->assertMatchesRegularExpression('/<title>(.*?)<\/title>/s', $html);
         preg_match('/<title>(.*?)<\/title>/s', $html, $matches);
 
-        return substr_count(mb_strtolower($matches[1]), 'devtyeng');
+        return substr_count(mb_strtolower($matches[1]), 'bevehard');
     }
 
     private function titleTag(string $html): string
@@ -30,23 +30,23 @@ class ServiceTitleTest extends TestCase
     {
         $slug = array_key_first(app(\App\Services\SchemeService::class)->all());
 
-        // meta_title already carries the brand ("Judul | Devtyeng"): the
+        // meta_title already carries the brand ("Judul | Bevehard"): the
         // layout must not append it a second time.
         $html = $this->get('/layanan/'.$slug)->assertOk()->getContent();
 
         $this->assertSame(1, $this->brandCountInTitle($html));
         $this->assertStringContainsString(' | ', $this->titleTag($html));
-        $this->assertStringNotContainsString('— Devtyeng', $this->titleTag($html));
+        $this->assertStringNotContainsString('— Bevehard', $this->titleTag($html));
     }
 
     public function test_regional_service_title_keeps_regional_context_and_single_brand(): void
     {
-        $html = $this->get('/kota-malang/brevet-ab')->assertOk()->getContent();
+        $html = $this->get('/kota-malang/analisis-pelumas-unit-alat-berat')->assertOk()->getContent();
         $title = $this->titleTag($html);
 
         $this->assertSame(1, $this->brandCountInTitle($html));
         $this->assertStringContainsString('Kota Malang', $title);
-        $this->assertStringEndsWith('— Devtyeng', $title);
+        $this->assertStringEndsWith('— Bevehard', $title);
     }
 
     public function test_og_and_twitter_titles_match_the_document_title(): void
@@ -54,8 +54,8 @@ class ServiceTitleTest extends TestCase
         $html = $this->get('/artikel')->assertOk()->getContent();
         $title = $this->titleTag($html);
 
-        $this->assertMatchesRegularExpression('/<meta property="og:title" content="[^"]*Devtyeng[^"]*">/', $html);
-        $this->assertMatchesRegularExpression('/<meta name="twitter:title" content="[^"]*Devtyeng[^"]*">/', $html);
+        $this->assertMatchesRegularExpression('/<meta property="og:title" content="[^"]*Bevehard[^"]*">/', $html);
+        $this->assertMatchesRegularExpression('/<meta name="twitter:title" content="[^"]*Bevehard[^"]*">/', $html);
 
         preg_match('/<meta property="og:title" content="(.*?)">/', $html, $og);
         preg_match('/<meta name="twitter:title" content="(.*?)">/', $html, $tw);
