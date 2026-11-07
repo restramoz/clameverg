@@ -7,16 +7,16 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-    /* Bevehard — confident navy with a restrained warm accent */
+    /* Clameverg — confident navy with a restrained warm accent */
     --color-deepnavy: #0F172A;
     --color-charcoal: #0F172A;
     --color-graphite: #1E293B;
     --color-steel: #334155;
-    --color-electric-cyan: #B45309;
-    --color-cyan: #1E40AF;
-    --color-copper: #B45309;
-    --color-safety-amber: #B45309;
-    --color-gold: #B45309;
+    --color-electric-cyan: #14B8A6;
+    --color-cyan: #4338CA;
+    --color-copper: #14B8A6;
+    --color-safety-amber: #14B8A6;
+    --color-gold: #14B8A6;
     --color-offwhite: #F8FAFC;
     --color-light-surface: #F8FAFC;
     --color-muted: #E9EEF5;
@@ -25,14 +25,14 @@
     /* Legacy alias tokens mapped to new industrial palette */
     --color-industry-black: #0F172A;
     --color-dark-mahogany: #334155;
-    --color-burnt-brick: #B45309;
-    --color-safety-orange: #B45309;
+    --color-burnt-brick: #14B8A6;
+    --color-safety-orange: #14B8A6;
 
     /* Semantic tokens */
-    --color-primary: #1E3A8A;
-    --color-primary-dark: #1E40AF;
+    --color-primary: #4F46E5;
+    --color-primary-dark: #4338CA;
     --color-secondary: #1E293B;
-    --color-accent: #B45309;
+    --color-accent: #14B8A6;
     --color-wa-green: #25D366;
 
     /* Backward-compatible scales mapped safely to brand tokens */
@@ -58,20 +58,20 @@
     --color-concrete-700: #334155;
     --color-concrete-800: #1E293B;
 
-    --color-teal-700: #1E3A8A;
-    --color-teal-600: #1E40AF;
-    --color-teal-500: #3B82F6;
-    --color-teal-400: #B45309;
+    --color-teal-700: #4F46E5;
+    --color-teal-600: #4338CA;
+    --color-teal-500: #6366F1;
+    --color-teal-400: #14B8A6;
     --color-teal-soft: #F8FAFC;
 
-    --color-orange-400: #D97706;
-    --color-orange-500: #B45309;
-    --color-orange-600: #92400E;
+    --color-orange-400: #2DD4BF;
+    --color-orange-500: #14B8A6;
+    --color-orange-600: #0D9488;
     --color-orange-soft: #FFF7ED;
 
-    --color-emerald-400: #B45309;
-    --color-emerald-500: #1E3A8A;
-    --color-emerald-600: #1E40AF;
+    --color-emerald-400: #14B8A6;
+    --color-emerald-500: #4F46E5;
+    --color-emerald-600: #4338CA;
     --color-emerald-700: #1E293B;
     --color-emerald-soft: #F8FAFC;
 }
@@ -102,25 +102,25 @@
 /* Custom utility classes */
 .bg-industry-black { background-color: #0F172A; }
 .bg-dark-mahogany { background-color: #1E293B; }
-.bg-burnt-brick { background-color: #B45309; }
-.bg-safety-orange { background-color: #B45309; }
+.bg-burnt-brick { background-color: #14B8A6; }
+.bg-safety-orange { background-color: #14B8A6; }
 
 .text-industry-black { color: #0F172A; }
 .text-dark-mahogany { color: #334155; }
-.text-burnt-brick { color: #B45309; }
-.text-safety-orange { color: #B45309; }
+.text-burnt-brick { color: #14B8A6; }
+.text-safety-orange { color: #14B8A6; }
 
 .border-industry-black { border-color: #0F172A; }
 .border-dark-mahogany { border-color: #1E293B; }
-.border-burnt-brick { border-color: #B45309; }
-.border-safety-orange { border-color: #B45309; }
+.border-burnt-brick { border-color: #14B8A6; }
+.border-safety-orange { border-color: #14B8A6; }
 
 :focus-visible {
-    outline: 3px solid #1E3A8A;
+    outline: 3px solid #4F46E5;
     outline-offset: 3px;
 }
 
-/* Outline default #1E3A8A nyaris tak terlihat di permukaan gelap (#0F172A ≈ 1.1:1);
+/* Outline default #4F46E5 nyaris tak terlihat di permukaan gelap (#0F172A ≈ 1.1:1);
    amber #F59E0B memberi ≥4.5:1 terhadap kedua permukaan gelap di situs ini. */
 .bg-industry-black :focus-visible,
 .bg-dark-mahogany :focus-visible {

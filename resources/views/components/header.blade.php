@@ -1,9 +1,9 @@
-<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 text-slate-900 shadow-sm backdrop-blur">
+<header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 text-slate-900 shadow-sm backdrop-blur-xl">
     <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="{{ route('home') }}" class="inline-flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="{{ config('app.name', 'Bevehard') }} beranda">
-            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-lg font-black text-white">D</span>
+        <a href="{{ route('home') }}" class="inline-flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="{{ config('app.name', 'Clameverg') }} beranda">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-indigo-400 text-lg font-black text-white shadow-md">C</span>
             <span class="leading-tight">
-                <span class="block text-lg font-extrabold tracking-tight">{{ config('app.name', 'Bevehard') }}</span>
+                <span class="block text-lg font-extrabold tracking-tight">{{ config('app.name', 'Clameverg') }}</span>
                 <span class="block text-[11px] font-medium text-slate-600">Katalog layanan profesional</span>
             </span>
         </a>
@@ -12,7 +12,7 @@
             <a href="{{ route('home') }}#layanan" class="text-sm font-semibold text-slate-700 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Layanan</a>
             <a href="{{ route('home') }}#wilayah" class="text-sm font-semibold text-slate-700 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Wilayah</a>
             <a href="{{ route('articles.index') }}" class="text-sm font-semibold text-slate-700 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Artikel</a>
-            <x-wa-cta variant="primary" size="sm" label="Tanya layanan" class="bg-accent font-bold text-white hover:bg-amber-800" />
+            <x-wa-cta variant="primary" size="sm" label="Tanya layanan" class="bg-primary font-bold text-white hover:bg-primary-dark" />
         </nav>
 
         <button id="mobile-nav-toggle" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-300 text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-label="Buka menu navigasi">
@@ -26,7 +26,7 @@
             <a href="{{ route('home') }}#layanan" class="mobile-nav-link rounded-lg px-3 py-3 font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Layanan</a>
             <a href="{{ route('home') }}#wilayah" class="mobile-nav-link rounded-lg px-3 py-3 font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Wilayah</a>
             <a href="{{ route('articles.index') }}" class="mobile-nav-link rounded-lg px-3 py-3 font-semibold text-slate-800 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Artikel</a>
-            <div class="pt-2"><x-wa-cta variant="primary" size="md" label="Tanya layanan" class="w-full justify-center bg-accent font-bold text-white hover:bg-amber-800" /></div>
+            <div class="pt-2"><x-wa-cta variant="primary" size="md" label="Tanya layanan" class="w-full justify-center bg-primary font-bold text-white hover:bg-primary-dark" /></div>
         </div>
     </nav>
 </header>

@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
-    <title>@yield('title', 'Admin Panel') — {{ config('app.name', 'Bevehard') }}</title>
+    <title>@yield('title', 'Admin Panel') — {{ config('app.name', 'Clameverg') }}</title>
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#0C0C0C">
@@ -31,7 +31,7 @@
                         </div>
                         <div>
                             <span class="font-extrabold text-sm text-white tracking-tight block leading-none uppercase">
-                                BEVEHARD
+                                CLAMEVERG
                             </span>
                             <span class="text-[10px] uppercase tracking-wider text-neutral-300 font-semibold">
                                 Admin CMS
@@ -113,7 +113,7 @@
 
     <!-- Admin Footer -->
     <footer class="bg-white border-t border-neutral-200 py-4 text-center text-xs text-neutral-500">
-        Bevehard &mdash; Administrator Panel &copy; {{ date('Y') }}
+        Clameverg &mdash; Administrator Panel &copy; {{ date('Y') }}
     </footer>
 
     @stack('scripts')

@@ -39,6 +39,6 @@ class LegacyServiceRedirectTest extends TestCase
         // the followed request renders the canonical page directly.
         $this->followingRedirects()->get('/program/'.$slug)
             ->assertOk()
-            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/layanan/'.$slug.'">', false);
+            ->assertSee('<link rel="canonical" href="https://clameverg.my.id/layanan/'.$slug.'">', false);
     }
 }

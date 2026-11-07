@@ -33,6 +33,10 @@ Route::get('/layanan/{slug}', [ProgramController::class, 'show'])
     ->name('program.show')
     ->where('slug', '[a-z0-9\-]+');
 
+// Context-aware catalog detail routes: geographic slug followed by service slug
+// (e.g. /aceh/{service-slug}, /lhokseumawe/{service-slug}).
+// Registered after static/system routes so it does not capture them.
+
 // Legacy /program/{slug} URLs permanently redirect to /layanan/{slug}
 Route::get('/program/{slug}', [ProgramController::class, 'showLegacy'])
     ->name('program.legacy.show')
@@ -74,7 +78,7 @@ Route::get('/kota/{slug}', [RegionalController::class, 'city'])
     ->name('regional.city')
     ->where('slug', '[a-z0-9\-]+');
 
-// District landing pages are not public in Bevehard.
+// District landing pages are not public in Clameverg.
 
 // Legacy compatibility redirects (from reference project URL structures)
 Route::get('/kota-{slug}', [RegionalController::class, 'legacyCityRedirect'])
@@ -90,3 +94,7 @@ Route::get('/provinsi-{region}/{program}', [ProgramController::class, 'regionalP
 Route::get('/{region}/{program}', [ProgramController::class, 'regionalProgram'])
     ->name('region.program.detail')
     ->where(['region' => '(?:kota|kabupaten)-[a-z0-9\-]+', 'program' => '[a-z0-9\-]+']);
+
+Route::get('/{geographic}/{service}', [ProgramController::class, 'geographicService'])
+    ->name('geographic.service.show')
+    ->where(['geographic' => '[a-z0-9\-]+', 'service' => '[a-z0-9\-]+']);

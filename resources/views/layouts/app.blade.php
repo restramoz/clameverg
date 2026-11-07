@@ -9,7 +9,7 @@
 @php
     // Brand appears exactly once: only append when not already present
     // (case-insensitive), e.g. scheme meta_title already ends with the brand.
-    $brandName = trim((string) config('app.name', 'Bevehard'));
+    $brandName = trim((string) config('app.name', 'Clameverg'));
     $brandTitle = trim((string) View::getSection('title'));
     if ($brandTitle === '') {
         $brandTitle = $brandName;
@@ -20,22 +20,22 @@
 
     <!-- Isi judul section sudah di-escape di titik penyimpanannya (startSection), jadi cetak apa adanya. -->
     <title>{!! $brandTitle !!}</title>
-    <meta name="description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Bevehard dan temukan informasi yang tersedia untuk setiap program.')">
+    <meta name="description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Clameverg dan temukan informasi yang tersedia untuk setiap program.')">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="@yield('canonical_url', rtrim(config('app.url'), '/') . request()->getPathInfo())">
 
     <!-- Open Graph / Meta -->
     <meta property="og:title" content="{!! $brandTitle !!}">
-    <meta property="og:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Bevehard dan temukan informasi yang tersedia untuk setiap program.')">
+    <meta property="og:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Clameverg dan temukan informasi yang tersedia untuk setiap program.')">
     <meta property="og:type" content="website">
     <meta property="og:url" content="@yield('canonical_url', rtrim(config('app.url'), '/') . request()->getPathInfo())">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{!! $brandTitle !!}">
-    <meta name="twitter:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Bevehard.')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Jelajahi katalog layanan profesional Clameverg.')">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#1E3A8A">
+    <meta name="theme-color" content="#4F46E5">
 
     <!-- Styles & Scripts via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -47,9 +47,9 @@
     @stack('schema')
     @stack('styles')
 </head>
-<body class="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#B45309] selection:text-white">
+<body class="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#14B8A6] selection:text-white">
     <!-- Accessible Skip Link -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#B45309] text-white font-bold px-4 py-2 rounded-md shadow-lg outline-none ring-2 ring-[#0F172A]">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[#14B8A6] text-white font-bold px-4 py-2 rounded-md shadow-lg outline-none ring-2 ring-[#0F172A]">
         Lewati ke konten utama
     </a>
 

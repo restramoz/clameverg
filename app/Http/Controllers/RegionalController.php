@@ -19,6 +19,8 @@ class RegionalController extends Controller
         $province = $this->regional->findProvince($slug);
         abort_if($province === null, 404, 'Provinsi tidak ditemukan.');
 
+        request()->session()->put('last_regional_slug', $province['slug']);
+
         return view('regional.province', [
             'province' => $province,
             'programs' => $this->schemes->all(),
@@ -34,6 +36,8 @@ class RegionalController extends Controller
         if ($slug !== $city['slug']) {
             return redirect()->route('regional.city', $city['slug'], 301);
         }
+
+        request()->session()->put('last_city_slug', $city['slug']);
 
         $articles = collect();
         if (Schema::hasTable('articles')) {

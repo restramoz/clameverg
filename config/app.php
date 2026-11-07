@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Bevehard'),
+    'name' => env('APP_NAME', 'Clameverg'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://bevehard.my.id'),
+    'url' => env('APP_URL', 'https://clameverg.my.id'),
 
     /*
     |--------------------------------------------------------------------------

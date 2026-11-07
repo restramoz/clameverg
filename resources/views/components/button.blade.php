@@ -16,13 +16,13 @@
 
     // Warna tombol aksen (variant primary/wa):
     $variants = [
-        // Putih di atas amber #B45309 = 5.02:1 (teks gelap lama hanya 3.55:1; hover lama
-        // justru memutihkan). Hover lebih gelap: orange-600 #92400E → 7.1:1 dengan putih.
-        'primary' => 'bg-safety-orange hover:bg-orange-600 text-white shadow-md active:bg-dark-mahogany font-bold',
+        // Putih di atas amber #14B8A6 = 5.02:1 (teks gelap lama hanya 3.55:1; hover lama
+        // justru memutihkan). Hover lebih gelap: orange-600 #0D9488 → 7.1:1 dengan putih.
+        'primary' => 'bg-primary hover:bg-primary-dark text-white shadow-sm active:opacity-90 font-bold',
         'secondary' => 'bg-white hover:bg-neutral-100 text-dark-mahogany font-bold shadow-sm border-2 border-dark-mahogany active:bg-neutral-200',
         'outline' => 'bg-transparent hover:bg-dark-mahogany hover:text-white text-dark-mahogany font-bold border-2 border-dark-mahogany active:bg-dark-mahogany',
         'white' => 'bg-white hover:bg-neutral-100 text-industry-black font-semibold shadow-sm border border-neutral-300',
-        'wa' => 'bg-safety-orange hover:bg-orange-600 text-white shadow-md active:bg-dark-mahogany font-bold',
+        'wa' => 'bg-primary hover:bg-primary-dark text-white shadow-sm active:opacity-90 font-bold',
         'dark' => 'bg-industry-black hover:bg-dark-mahogany text-white font-bold shadow-md border border-neutral-700 active:bg-industry-black',
     ];
 

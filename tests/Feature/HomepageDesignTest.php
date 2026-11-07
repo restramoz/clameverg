@@ -10,7 +10,7 @@ class HomepageDesignTest extends TestCase
     public function test_homepage_renders_devtyeng_and_catalog_content(): void
     {
         $response = $this->get('/');
-        $response->assertOk()->assertSee('Bevehard');
+        $response->assertOk()->assertSee('Clameverg');
         $response->assertSee(array_values(app(SchemeService::class)->all())[0]['title']);
         $response->assertDontSee('Certyang');
     }
@@ -30,8 +30,8 @@ class HomepageDesignTest extends TestCase
     public function test_homepage_canonical_uses_production_domain(): void
     {
         $this->get('/')->assertOk()
-            ->assertSee('<link rel="canonical" href="https://bevehard.my.id/">', false)
-            ->assertSee('property="og:url" content="https://bevehard.my.id/"', false);
+            ->assertSee('<link rel="canonical" href="https://clameverg.my.id/">', false)
+            ->assertSee('property="og:url" content="https://clameverg.my.id/"', false);
     }
 
     public function test_whatsapp_cta_uses_configuration_and_falls_back_without_a_number(): void

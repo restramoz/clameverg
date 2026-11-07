@@ -597,7 +597,7 @@ class SchemeService
             'level' => $lsp ?? ('Layanan ' . $categoryName),
             'title' => $name,
             'badge' => $lsp ?? ('Layanan ' . $categoryName),
-            'meta_title' => $name . ' | ' . config('app.name', 'Bevehard'),
+            'meta_title' => $name . ' | ' . config('app.name', 'Clameverg'),
             'meta_description' => 'Layanan ' . $categoryName . ' ' . $name . '. Rincian program dikonfirmasi melalui konsultasi.',
             'hero_heading' => $categoryName,
             'hero_highlight' => $name,

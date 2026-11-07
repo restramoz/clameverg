@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title', 'Pelatihan & Sertifikasi di Provinsi ' . $province['name'])
@@ -6,413 +5,142 @@
 @section('wa_message', $waMessage)
 
 @section('content')
-    {{-- Breadcrumb --}}
-    <div class="bg-neutral-100 border-b border-neutral-200">
-        <x-breadcrumb :items="[
-            ['label' => 'Wilayah', 'url' => null],
-            ['label' => $province['name'], 'url' => null],
-        ]" />
+<div class="bg-slate-100 border-b border-slate-200">
+    <x-breadcrumb :items="[
+        ['label' => 'Wilayah', 'url' => null],
+        ['label' => $province['name'], 'url' => null],
+    ]" />
+</div>
+
+<section class="relative overflow-hidden bg-slate-950 text-white">
+    <div class="absolute inset-0 opacity-30">
+        <div class="absolute -top-24 right-0 h-72 w-72 rounded-full bg-primary/40 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl"></div>
     </div>
 
-    {{-- Hero --}}
-    <section class="relative bg-industry-black text-white overflow-hidden border-b border-dark-mahogany"
-        aria-labelledby="prov-hero-heading">
-
-        <div class="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="grid-p" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFF" stroke-width="1" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid-p)" />
-            </svg>
-        </div>
-
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-            <div class="max-w-3xl">
-
-                {{-- Mobile hero image --}}
-                <div class="lg:hidden mb-5 -mx-4 sm:-mx-6">
-                    <img
-                        src="/images/home/feature-lineworker-ppe.jpg"
-                        alt="Tenaga profesional industri bekerja dengan perlengkapan keselamatan"
-                        width="1600"
-                        height="900"
-                        loading="eager"
-                        fetchpriority="high"
-                        decoding="async"
-                        class="hero-image-mobile w-full object-cover object-center rounded-xl"
-                    />
-                </div>
-
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-burnt-brick border border-burnt-brick/80 text-white text-xs sm:text-sm font-semibold mb-5 shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-safety-orange animate-pulse"></span>
-                    Informasi Skema &amp; Layanan Konsultasi
-                </div>
-
-                <h1 id="prov-hero-heading"
-                    class="font-extrabold tracking-tight text-white leading-tight uppercase text-[clamp(1.75rem,4.5vw,2.5rem)] sm:text-[clamp(2rem,5vw,3rem)] lg:text-[clamp(2.25rem,4.5vw,3.5rem)]">
-                    Skema Kompetensi<br>
-                    <span class="text-safety-orange">
-                        Bevehard Provinsi {{ $province['name'] }}
-                    </span>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="grid lg:grid-cols-12 gap-10 items-end">
+            <div class="lg:col-span-8">
+                <span class="text-xs font-semibold uppercase tracking-[0.22em] text-teal-300">Wilayah</span>
+                <h1 class="mt-4 text-4xl sm:text-5xl font-black tracking-tight leading-tight">
+                    Program Clameverg di <span class="text-teal-300">Provinsi {{ $province['name'] }}</span>
                 </h1>
-
-                <p class="mt-6 text-base sm:text-lg text-neutral-200 leading-relaxed">
-                    Informasi katalog layanan dengan konteks <strong class="text-white">Provinsi {{ $province['name'] }}</strong>. Nama wilayah ini tidak menyatakan adanya kantor atau penyelenggaraan setempat.
+                <p class="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+                    Halaman ini menyediakan informasi katalog layanan dengan konteks regional. Nama wilayah ini tidak menyatakan adanya kantor atau penyelenggaraan setempat.
                 </p>
-
-                <div class="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
-                    <x-wa-cta
-                        variant="primary"
-                        size="lg"
-                        :message="$waMessage"
-                        label="Konsultasi Wilayah {{ $province['name'] }}"
-                        class="w-full sm:w-auto font-bold shadow-lg"
-                    />
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi Provinsi {{ $province['name'] }}" class="min-h-[48px] px-7 rounded-2xl bg-teal-500 text-slate-950 font-black hover:bg-teal-400 shadow-none" />
+                    <a href="#layanan" class="inline-flex items-center justify-center min-h-[48px] px-7 rounded-2xl border border-white/20 text-white font-bold hover:bg-white/10 transition">Lihat program →</a>
                 </div>
+            </div>
 
-                <div class="mt-8 pt-6 border-t border-neutral-800 grid grid-cols-2 gap-4 sm:gap-6">
-                    <div class="min-w-0">
-                        <div class="text-[10px] sm:text-xs text-neutral-400 uppercase tracking-wider">Pulau</div>
-                        <div class="text-sm sm:text-base font-extrabold text-white mt-0.5">
-                            {{ $province['island'] }}
-                        </div>
+            <div class="lg:col-span-4 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <dl class="grid grid-cols-2 gap-4">
+                    <div>
+                        <dt class="text-xs text-slate-400">Pulau</dt>
+                        <dd class="mt-1 font-bold">{{ $province['island'] }}</dd>
                     </div>
-
-                    <div class="min-w-0">
-                        <div class="text-[10px] sm:text-xs text-neutral-400 uppercase tracking-wider">Kab/Kota</div>
-                        <div class="text-sm sm:text-base font-extrabold text-amber-500 mt-0.5">
-                            {{ $province['total_cities'] }}
-                        </div>
+                    <div>
+                        <dt class="text-xs text-slate-400">Kab/Kota</dt>
+                        <dd class="mt-1 font-bold">{{ $province['total_cities'] }}</dd>
                     </div>
-
-                    <div class="min-w-0">
-                        <div class="text-[10px] sm:text-xs text-neutral-400 uppercase tracking-wider">Layanan</div>
-                        <div class="text-sm sm:text-base font-extrabold text-white mt-0.5">
-                            {{ count($programs) }} Layanan
-                        </div>
+                    <div>
+                        <dt class="text-xs text-slate-400">Layanan</dt>
+                        <dd class="mt-1 font-bold">{{ count($programs) }}</dd>
                     </div>
-
-                    <div class="min-w-0">
-                        <div class="text-[10px] sm:text-xs text-neutral-400 uppercase tracking-wider">Lingkup</div>
-                        <div class="text-sm sm:text-base font-extrabold text-amber-500 mt-0.5">
-                            Bevehard
-                        </div>
+                    <div>
+                        <dt class="text-xs text-slate-400">Lingkup</dt>
+                        <dd class="mt-1 font-bold text-teal-300">Clameverg</dd>
                     </div>
-                </div>
-
+                </dl>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    {{-- Disclaimer --}}
-    <section class="py-8 sm:py-10 bg-neutral-50 border-b border-neutral-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-start gap-4">
-                <svg class="w-6 h-6 text-burnt-brick shrink-0 mt-0.5"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
+<section class="py-8 bg-amber-50 border-b border-amber-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-start gap-4">
+            <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p class="text-sm text-amber-900 leading-relaxed">
+                <strong>Catatan penting:</strong> halaman ini adalah portal informasi dan konsultasi program. Detail pelatihan, jadwal, dan persyaratan administrasi dapat ditanyakan melalui WhatsApp.
+            </p>
+        </div>
+    </div>
+</section>
 
-                <p class="text-sm text-dark-mahogany leading-relaxed">
-                    <strong class="text-industry-black">Catatan penting:</strong>
-                    Halaman ini adalah portal informasi dan konsultasi program.
-                    Informasi pelatihan, jadwal, dan persyaratan administrasi untuk program yang diminati di Provinsi {{ $province['name'] }} dapat ditanyakan melalui WhatsApp.
-                </p>
+@php
+    $schemeService = app(\App\Services\SchemeService::class);
+    $allPrograms = $programs;
+    $categories = collect($programs)->groupBy(fn ($item) => $item['category_label'] ?? 'Layanan Lainnya')->map(function ($items, $categoryName) use ($schemeService) {
+        return [
+            'name' => $categoryName,
+            'slug' => \Illuminate\Support\Str::slug($categoryName),
+            'items' => $items,
+            'count' => $items->count(),
+            'meta' => $schemeService::categoryMetadata($categoryName),
+        ];
+    })->sortBy('name')->values();
+    $totalServices = count($programs);
+    $waPhone = \App\Support\WhatsApp::normalizePhone(config('services.whatsapp.phone'));
+@endphp
+
+@include('components.service-catalog', ['catalogContext' => 'regional', 'catalogGeographicSlug' => $province['slug']])
+
+{{-- Proses & Syarat Umum --}}
+<section class="py-14 sm:py-20 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-4">Proses &amp; Syarat Umum</h2>
+        <p class="text-slate-600 leading-relaxed max-w-3xl">Untuk mengetahui proses, persyaratan, materi, dan informasi layanan secara lengkap, silakan lihat halaman layanan terkait atau hubungi Clameverg melalui kanal resmi.</p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 max-w-4xl">
+            <div class="rounded-xl border border-slate-200 bg-white p-5">
+                <h3 class="font-bold text-slate-900 mb-2">Rincian layanan</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Rincian proses, persyaratan, dan materi setiap layanan dapat dilihat pada halaman layanan terkait.</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-white p-5">
+                <h3 class="font-bold text-slate-900 mb-2">Konsultasi</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Untuk rincian lebih lanjut, hubungi Clameverg melalui kanal resmi. Tautan WhatsApp tersedia pada halaman ini dan di halaman layanan.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    {{-- Program Links: show 6 initially --}}
-    <section id="program"
-        class="py-12 sm:py-16 lg:py-20 bg-white border-b border-neutral-200"
-        aria-labelledby="prov-program-heading">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="max-w-3xl mb-8 sm:mb-10">
-                <span class="text-xs font-bold uppercase tracking-wider text-burnt-brick bg-neutral-100 px-3 py-1 rounded-full border border-burnt-brick/20">
-                    Layanan Unggulan
-                </span>
-
-                <h2 id="prov-program-heading"
-                    class="mt-3 font-extrabold text-industry-black tracking-tight text-[clamp(1.5rem,4vw,2rem)] sm:text-[clamp(1.75rem,4.5vw,2.25rem)]">
-                    Skema Kompetensi &amp; Layanan di {{ $province['name'] }}
-                </h2>
-
-                <p class="mt-3 text-sm sm:text-base text-dark-mahogany leading-relaxed">
-                    Pilih program pelatihan Bevehard sesuai kebutuhan organisasi Anda.
-                    Gunakan tombol di bawah untuk melihat seluruh layanan yang tersedia.
-                </p>
-            </div>
-
-            @php
-                $initialProgramLimit = 6;
-                $totalPrograms = count($programs);
-            @endphp
-
-            <div id="province-program-grid"
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-
-                @foreach ($programs as $prog)
-                    <article
-                        class="province-program-item {{ $loop->index >= $initialProgramLimit ? 'hidden' : '' }}"
-                        @if ($loop->index >= $initialProgramLimit) hidden @endif>
-
-                        <a href="{{ route('province.program.detail', ['region' => $province['slug'], 'program' => $prog['slug']]) }}"
-                            class="group h-full flex flex-col bg-white rounded-xl border border-neutral-200 hover:border-burnt-brick hover:shadow-md transition-all overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick">
-
-                            <div class="h-1.5 bg-safety-orange"></div>
-
-                            <div class="p-5 sm:p-6 flex-1 flex flex-col">
-
-                                <div class="text-xs font-bold uppercase tracking-wider text-burnt-brick mb-2">
-                                    {{ $prog['category_label'] ?? 'Layanan' }}
-                                </div>
-
-                                <h3 class="text-base sm:text-lg font-bold text-industry-black mb-2 group-hover:text-burnt-brick transition-colors leading-snug">
-                                    {{ $prog['title'] }}
-                                </h3>
-
-                                <p class="text-xs sm:text-sm text-dark-mahogany flex-1 leading-relaxed line-clamp-3">
-                                    {{ $prog['hero_subheading'] ?? 'Informasi program pelatihan dan konsultasi Bevehard.' }}
-                                </p>
-
-                                <div class="mt-4 pt-4 border-t border-neutral-100 text-xs font-bold text-burnt-brick flex items-center justify-between">
-                                    <span>Detail Program</span>
-                                    <span aria-hidden="true">&rarr;</span>
-                                </div>
-
-                            </div>
-                        </a>
-                    </article>
-                @endforeach
-
-            </div>
-
-            {{-- Show all / hide button --}}
-            @if ($totalPrograms > $initialProgramLimit)
-                <div class="mt-8 sm:mt-10 flex justify-center">
-                    <button
-                        type="button"
-                        id="province-program-toggle"
-                        class="inline-flex cursor-pointer items-center justify-center gap-2 px-5 sm:px-7 py-3 min-h-[48px] rounded-xl border-2 border-burnt-brick text-sm sm:text-base font-bold text-burnt-brick hover:bg-burnt-brick hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick focus-visible:ring-offset-2"
-                        aria-expanded="false"
-                        aria-controls="province-program-grid"
-                        data-total="{{ $totalPrograms }}"
-                        data-limit="{{ $initialProgramLimit }}">
-
-                        <span id="province-program-toggle-label">
-                            Lihat Semua {{ $totalPrograms }} Layanan
-                        </span>
-
-                        <svg id="province-program-toggle-icon"
-                            class="w-4 h-4 transition-transform"
-                            viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            aria-hidden="true">
-                            <path d="m6 9 6 6 6-6" />
-                        </svg>
-                    </button>
-                </div>
-            @endif
-
+{{-- Pertanyaan Umum --}}
+<section class="py-14 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-6">Pertanyaan Umum</h2>
+        <div class="space-y-3 max-w-4xl">
+            <details class="rounded-xl border border-slate-200 p-4"><summary class="font-bold cursor-pointer">Bagaimana cara mendapatkan informasi layanan di Provinsi {{ $province['name'] }}?</summary><p class="mt-3 text-slate-600">Telusuri katalog layanan di halaman ini, lalu buka halaman detail layanan terkait untuk melihat rincian. Hubungi Clameverg melalui kanal resmi untuk konsultasi.</p></details>
+            <details class="rounded-xl border border-slate-200 p-4"><summary class="font-bold cursor-pointer">Bagaimana cara mengetahui persyaratan program?</summary><p class="mt-3 text-slate-600">Persyaratan setiap program dapat dilihat pada halaman layanan terkait. Untuk rincian lebih lanjut, hubungi Clameverg melalui kanal resmi.</p></details>
+            <details class="rounded-xl border border-slate-200 p-4"><summary class="font-bold cursor-pointer">Bagaimana cara mengetahui materi atau silabus layanan?</summary><p class="mt-3 text-slate-600">Materi atau silabus layanan tersedia pada halaman detail layanan terkait. Hubungi Clameverg untuk penjelasan lebih rinci.</p></details>
+            <details class="rounded-xl border border-slate-200 p-4"><summary class="font-bold cursor-pointer">Bagaimana cara menghubungi Clameverg?</summary><p class="mt-3 text-slate-600">Gunakan tombol WhatsApp yang tersedia pada halaman ini atau halaman layanan. Seluruh konsultasi program disampaikan melalui kanal resmi Clameverg.</p></details>
+            <details class="rounded-xl border border-slate-200 p-4"><summary class="font-bold cursor-pointer">Apakah informasi layanan dapat dikonsultasikan terlebih dahulu?</summary><p class="mt-3 text-slate-600">Ya. Anda dapat menghubungi Clameverg terlebih dahulu untuk membahas program yang diminati. Konsultasi tidak menjanjikan penetapan program tanpa konfirmasi.</p></details>
+            <details class="rounded-xl border border-slate-200 p-4"><summary class="font-bold cursor-pointer">Apakah halaman regional menyatakan kantor setempat?</summary><p class="mt-3 text-slate-600">Tidak. Halaman regional adalah konteks informasi, bukan penunjukan kantor setempat.</p></details>
         </div>
-    </section>
+    </div>
+</section>
 
-    {{-- Cities in Province --}}
-    @if (count($province['cities']) > 0)
-        <section id="kota"
-            class="py-12 sm:py-16 lg:py-20 bg-neutral-50 border-b border-neutral-200"
-            aria-labelledby="prov-kota-heading">
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mb-8">
-                    <span class="text-xs font-bold uppercase tracking-wider text-burnt-brick">
-                        Cakupan Wilayah
-                    </span>
-
-                    <h2 id="prov-kota-heading"
-                        class="mt-2 text-xl sm:text-2xl font-extrabold text-industry-black">
-                        Kabupaten &amp; Kota di Provinsi {{ $province['name'] }}
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                    @foreach ($province['cities'] as $c)
-                        <a href="{{ route('regional.city', $c['slug']) }}"
-                            class="block px-3 py-3 rounded-lg bg-white border border-neutral-200 hover:border-burnt-brick hover:bg-neutral-100 text-sm font-medium text-dark-mahogany hover:text-burnt-brick transition-colors truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick">
-                            {{ $c['name'] }}
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-
-    {{-- FAQ --}}
-    <section id="faq"
-        class="py-12 sm:py-16 lg:py-20 bg-white border-b border-neutral-200"
-        aria-labelledby="prov-faq-heading">
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="text-center mb-8 sm:mb-12">
-                <span class="text-xs font-bold uppercase tracking-wider text-burnt-brick bg-neutral-100 px-3 py-1 rounded-full border border-burnt-brick/20">
-                    Tanya Jawab
-                </span>
-
-                <h2 id="prov-faq-heading"
-                    class="mt-3 text-2xl sm:text-3xl font-extrabold text-industry-black tracking-tight">
-                    FAQ: Skema Kompetensi di {{ $province['name'] }}
-                </h2>
-            </div>
-
-            <div class="space-y-4">
-                @foreach ([
-                    [
-                        'q' => 'Apakah skema kompetensi dan layanan konsultasi tersedia untuk wilayah Provinsi ' . $province['name'] . '?',
-                        'a' => 'Halaman ini menampilkan informasi program dari katalog Bevehard. Hubungi kami melalui WhatsApp untuk menanyakan rincian program di Provinsi ' . $province['name'] . '.',
-                    ],
-                    [
-                        'q' => 'Skema kompetensi apa saja yang tersedia?',
-                        'a' => 'Daftar program tersedia pada bagian katalog di halaman ini. Buka seluruh layanan untuk melihat daftar lengkap dan pilih salah satu program untuk membaca rinciannya.',
-                    ],
-                    [
-                        'q' => 'Bagaimana cara pengajuan konsultasi untuk kebutuhan di ' . $province['name'] . '?',
-                        'a' => 'Hubungi kami melalui WhatsApp untuk menanyakan informasi program dan persyaratan yang tersedia.',
-                    ],
-                ] as $faq)
-
-                    <details class="group bg-white rounded-xl border border-neutral-200 p-5 sm:p-6 open:border-burnt-brick shadow-sm">
-                        <summary class="flex justify-between items-center gap-4 font-bold text-industry-black cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-brick rounded">
-                            <span>{{ $faq['q'] }}</span>
-
-                            <span class="w-7 h-7 rounded-full bg-neutral-100 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform">
-                                <svg class="w-4 h-4 text-burnt-brick"
-                                    fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2.5"
-                                    aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </summary>
-
-                        <p class="mt-4 pt-4 border-t border-neutral-100 text-sm text-dark-mahogany leading-relaxed">
-                            {{ $faq['a'] }}
-                        </p>
-                    </details>
-
-                @endforeach
-            </div>
+{{-- Related Cities --}}
+<section class="py-14 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-6">Kota &amp; Kabupaten di Provinsi {{ $province['name'] }}</h2>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach(($province['cities'] ?? []) as $cityItem)
+                <a href="{{ route('regional.city', $cityItem['slug']) }}" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 hover:border-primary/40 hover:text-primary transition">
+                    {{ $cityItem['name'] }}
+                </a>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
-    {{-- Final CTA --}}
-    <section class="py-14 sm:py-20 lg:py-24 bg-industry-black text-white"
-        aria-labelledby="prov-cta-heading">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="max-w-3xl mx-auto">
-
-                <h2 id="prov-cta-heading"
-                    class="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
-                    Konsultasi Program Bevehard<br>
-                    <span class="text-safety-orange">
-                        Provinsi {{ $province['name'] }}
-                    </span>
-                </h2>
-
-                <p class="mt-4 text-base text-neutral-200 leading-relaxed">
-                    Hubungi kami untuk informasi program pelatihan dan kebutuhan konsultasi di Provinsi
-                    {{ $province['name'] }}.
-                </p>
-
-                <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
-                    <x-wa-cta
-                        variant="primary"
-                        size="lg"
-                        :message="$waMessage"
-                        label="Konsultasi Sekarang"
-                        class="w-full sm:w-auto font-bold shadow-lg"
-                    />
-
-                    <x-button
-                        :href="route('home')"
-                        variant="outline"
-                        size="lg"
-                        class="w-full sm:w-auto text-white border-2 border-neutral-400 hover:bg-neutral-800">
-                        Kembali ke Beranda
-                    </x-button>
-                </div>
-
-            </div>
+<section class="py-20 sm:py-24 bg-primary text-white">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight">Butuh rincian program di {{ $province['name'] }}?</h2>
+        <p class="mt-4 text-white/80 leading-relaxed">Sampaikan kebutuhan Anda melalui WhatsApp. Tim Clameverg akan membantu memilih program yang sesuai.</p>
+        <div class="mt-8 flex justify-center">
+            <x-wa-cta variant="primary" size="lg" :message="$waMessage" label="Konsultasi via WhatsApp" class="min-h-[52px] px-8 rounded-2xl bg-white text-primary font-black hover:bg-slate-100 shadow-lg" />
         </div>
-    </section>
+    </div>
+</section>
 @endsection
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggleButton = document.getElementById('province-program-toggle');
-    const programGrid = document.getElementById('province-program-grid');
-
-    if (!toggleButton || !programGrid) {
-        return;
-    }
-
-    const label = document.getElementById('province-program-toggle-label');
-    const icon = document.getElementById('province-program-toggle-icon');
-    const items = Array.from(
-        programGrid.querySelectorAll('.province-program-item')
-    );
-
-    const limit = Number(toggleButton.dataset.limit || 6);
-    const total = items.length;
-    let expanded = false;
-
-    function updateProgramList() {
-        items.forEach(function (item, index) {
-            const shouldHide = !expanded && index >= limit;
-            item.hidden = shouldHide;
-            if (shouldHide) {
-                item.classList.add('hidden');
-            } else {
-                item.classList.remove('hidden');
-            }
-        });
-
-        toggleButton.setAttribute('aria-expanded', String(expanded));
-
-        label.textContent = expanded
-            ? 'Sembunyikan Layanan'
-            : 'Lihat Semua ' + total + ' Layanan';
-
-        if (icon) {
-            icon.style.transform = expanded
-                ? 'rotate(180deg)'
-                : 'rotate(0deg)';
-        }
-    }
-
-    toggleButton.addEventListener('click', function () {
-        expanded = !expanded;
-        updateProgramList();
-
-        if (!expanded) {
-            document.getElementById('program').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-
-    updateProgramList();
-});
-</script>
-@endpush
